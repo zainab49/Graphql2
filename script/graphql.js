@@ -11,25 +11,10 @@ export async function fetchGraphQL(query, variables = {}) {
     },
     body: JSON.stringify({ query, variables }),
   });
-
-  const response = await res.json();
-
-  if (response.errors) {
-    const errorMessage = response.errors[0].message;
-
-    // Handle expired token
-    if (errorMessage.includes("JWTExpired")) {
-      localStorage.clear();
-      alert("Your session has expired. Please log in again.");
-      location.reload();
-    }
-
-    throw new Error(errorMessage);
-  }
-
-  return response.data;
+  const { data, errors } = await res.json();
+  if (errors) throw new Error(errors[0].message);
+  return data;
 }
-
 
 export async function getUserInfo() {
   const query = `

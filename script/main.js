@@ -3,6 +3,7 @@ import { loginUser, logoutUser, getToken } from "./auth.js";
 import { getUserInfo, getTransactions, getProgressData } from "./graphql.js";
 import { drawXPProgressChart, drawSuccessRateChart, drawXPByProjectChart, drawSkillsChart } from "./svg.js";
 
+
 // Data processors
 function calculateXPOverTime(transactions) {
   const xpTx = transactions.filter(t=>t.type==='xp');
@@ -90,6 +91,8 @@ async function showProfile() {
       getTransactions(user.id),
       getProgressData(user.id)
     ]);
+
+    
 
     const totalXP = tx.filter(t=>t.type==='xp').reduce((s,t)=>s+t.amount,0);
     const projStats  = calculateProjectStats(pd);
