@@ -8,7 +8,7 @@ import {
   GET_LATEST_PROJECTS_WITH_XP,
   GET_PISCINE_GO_XP,
   GET_PISCINE_JS_XP,
-  GET_PROJECT_XP
+  GET_PROJECT_XP,
 } from '../graphql/queries';
 import PassFailChart from './Graphs/PassFailChart';
 import XPByProjectChart from './Graphs/XPByProjectChart';
@@ -92,14 +92,6 @@ function Profile() {
               <div className="info-item">
                 <div className="info-label">Email</div>
                 <div className="info-value">{currentUser.email}</div>
-              </div>
-              <div className="info-item">
-                <div className="info-label">Started</div>
-                <div className="info-value">{new Date(currentUser.updatedAt).toLocaleDateString()}</div>
-              </div>
-              <div className="info-item">
-                <div className="info-label">Created</div>
-                <div className="info-value">{new Date(currentUser.createdAt).toLocaleDateString()}</div>
               </div>
             </div>
           </div>
