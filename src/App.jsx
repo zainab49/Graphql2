@@ -8,26 +8,18 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Graphql2">
       <Routes>
-        {/* Redirect "/" to "/login" */}
         <Route path="/" element={<Navigate to="/login" />} />
-
-        {/* Login page */}
         <Route path="/login" element={<Login />} />
-
-        {/* Profile page (protected) */}
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
           </ProtectedRoute>
         } />
-
-        {/* Catch-all for 404 pages */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;

@@ -6,6 +6,7 @@ function Login() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +27,6 @@ function Login() {
 
       const data = await response.json();
       localStorage.setItem('token', data);
-      const navigate = useNavigate();
       navigate('/profile');
     } catch (err) {
       setError(err.message);
