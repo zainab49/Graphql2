@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +25,7 @@ function Login() {
 
       const data = await response.json();
       localStorage.setItem('token', data);
-      navigate('/profile');
+      window.location.href = '/#/profile';
     } catch (err) {
       setError(err.message);
     }

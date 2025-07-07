@@ -1,6 +1,6 @@
 // App.jsx
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login.jsx';
 import Profile from './components/Profile.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
   return (
-    <BrowserRouter basename="/Graphql2">
+     <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
@@ -19,7 +19,7 @@ function App() {
         } />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 export default App;
