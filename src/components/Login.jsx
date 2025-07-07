@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [identifier, setIdentifier] = useState('');
@@ -25,7 +26,8 @@ function Login() {
 
       const data = await response.json();
       localStorage.setItem('token', data);
-      window.location.href = '/profile';
+      const navigate = useNavigate();
+      navigate('/profile');
     } catch (err) {
       setError(err.message);
     }
