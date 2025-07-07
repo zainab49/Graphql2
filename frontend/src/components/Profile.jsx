@@ -9,6 +9,7 @@ import {
   GET_PISCINE_GO_XP,
   GET_PISCINE_JS_XP,
   GET_PROJECT_XP,
+  GET_AUDITS
 } from '../graphql/queries';
 import PassFailChart from './Graphs/PassFailChart';
 import XPByProjectChart from './Graphs/XPByProjectChart';
@@ -31,6 +32,7 @@ function Profile() {
   const { data: projectsData } = useQuery(GET_PROJECTS_WITH_XP, { variables: { userId } });
   const { data: passFailData } = useQuery(GET_PROJECTS_PASS_FAIL, { variables: { userId } });
   const { data: latestProjectsData } = useQuery(GET_LATEST_PROJECTS_WITH_XP, { variables: { userId } });
+const { data: auditsData } = useQuery(GET_AUDITS, { variables: { userId } });
 
   if (
     userLoading ||
@@ -55,7 +57,11 @@ function Profile() {
   const passCount = passFailData.progress.filter((item) => item.grade !== null && item.grade >= 1).length;
   const failCount = passFailData.progress.filter((item) => item.grade !== null && item.grade < 1).length;
   const latestProjects = latestProjectsData?.transaction || [];
-
+  const audits = auditsData?.progress || [];
+const passedAudits = audits.filter(a => a.grade >= 1).length;
+const auditSuccessRate = audits.length 
+  ? Math.round((passedAudits / audits.length) * 100) 
+  : 0;
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to log out?')) {
       localStorage.removeItem('token');
@@ -86,8 +92,8 @@ function Profile() {
 
             <div className="info-grid">
               <div className="info-item">
-                <div className="info-label">ID</div>
-                <div className="info-value">{currentUser.id}</div>
+                 <div className="info-label">Audit Ratio</div>
+                 <div className="info-value">{auditSuccessRate}</div>
               </div>
               <div className="info-item">
                 <div className="info-label">Email</div>

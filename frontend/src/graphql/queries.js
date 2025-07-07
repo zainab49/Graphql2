@@ -7,8 +7,7 @@ export const GET_USER_INFO = gql`
       id
       login
       email
-      createdAt
-      updatedAt
+     auditRatio
       firstName
       lastName
     }
@@ -134,4 +133,13 @@ export const GET_LATEST_PROJECTS_WITH_XP =gql`query GetLatestProjectsAndXP($user
   `;
 
 
-
+export const GET_AUDITS = gql`
+  query GetAudits($userId: Int!) {
+    progress(where: { 
+      userId: { _eq: $userId }, 
+      object: { type: { _eq: "exercise" } } 
+    }) {
+      grade
+    }
+  }
+`;
