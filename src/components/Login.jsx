@@ -25,7 +25,7 @@ function Login() {
 
       const data = await response.json();
       localStorage.setItem('token', data);
-      window.location.href = '/#/profile';
+      window.location.href = '/Graphql2/#/profile';
     } catch (err) {
       setError(err.message);
     }
