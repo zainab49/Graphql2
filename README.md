@@ -1,6 +1,7 @@
 # GraphQL Student Profile Dashboard
 
-![Project Screenshot](./Screenshot1.png)  (./Screenshot2.png) 
+![Project Screenshot](./Screenshot1.png) 
+![Project Screenshot](./Screenshot2.png)
 
 A React-based dashboard that displays student information, XP progress, and project statistics by querying a GraphQL API.
 
@@ -30,9 +31,9 @@ A React-based dashboard that displays student information, XP progress, and proj
 1. Clone the repository:
 ```bash
 git clone https://github.com/zainab49/Graphql2.git
-cd frontend  
+cd frontend   
 
-2. Run the development server: 
-npm run dev
+
+
 
 
