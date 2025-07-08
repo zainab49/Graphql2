@@ -61,7 +61,8 @@ function Profile() {
  
 
   const handleLogout = () => {
-    // Implement your logout logic here
+     localStorage.removeItem("token");
+      window.location.href = "/Graphql2/#/login";
     console.log("Logout clicked");
   };
 
