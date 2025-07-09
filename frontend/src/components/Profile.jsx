@@ -66,6 +66,8 @@ function Profile() {
     console.log("Logout clicked");
   };
 
+  
+
   return (
     <div className="profile-container">
       <header className="header">

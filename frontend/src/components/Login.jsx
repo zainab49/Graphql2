@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 
 function Login() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
+  useEffect(()=>{
+    localStorage.removeItem('token');
+    console.log ('Token cleared on login page load');
+
+  },[]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
